@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="posts">
+        <h2>Tag: {{ term.name }}</h2>
+        {% for page in paginator.pages %}
+        <article class="post-entry">
+            {{ post_macros::page_in_list(page=page)}}
+        </article>
+        {% endfor %}
+        <footer class="page-footer">
+            <nav class="pagination">
+                {% if paginator.previous %}
+                    <a class="prev" href="{{ paginator.previous }}">← Previous</a>
+                {% endif %}
+                <!-- <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span> -->
+                {% if paginator.next %}
+                    <a class="next" href="{{ paginator.next }}">Next →</a>
+                {% endif %}
+            </nav>
+        </footer>
+    </div>
+{% endblock content %}

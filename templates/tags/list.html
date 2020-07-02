@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Tags</h1>
+
+    {% if terms %}
+        <ul class="post-tags">
+            {% for term in terms | reverse %}
+                <li><a href="{{ term.permalink | safe }}">{{ term.name }} ({{ term.pages | length }})</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock content %}
