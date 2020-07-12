@@ -69,6 +69,11 @@
     </head>
     
     {% if page %}<body class="single">{% else %}<body class="list">{% endif %}
+    
+    <!-- Apply theme -->
+    <script>
+      setTheme();
+    </script>
 
     {% block body %}
         <header class="header">
