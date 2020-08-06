@@ -15,6 +15,7 @@ title = "Zola-Paper"
 # Use snake_casing to be consistent with the rest of Zola
 [extra]
 links = []
+google_analytics = { enabled = false, id = ""}
 
 # The theme author info: you!
 [author]

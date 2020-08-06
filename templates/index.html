@@ -24,6 +24,15 @@
         <!-- Feeds -->
         {% if config.generate_feed %}<link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">{% endif %}
 
+        <!-- Google Analytics -->
+        {% if config.extra.google_analytics.enabled %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.google_analytics.id }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{ config.extra.google_analytics.id }}');
+        </script>{% endif %}
+
         <script>
             function setTheme() {
                 const time = new Date();
