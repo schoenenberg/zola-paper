@@ -1,2 +1,10 @@
 @import 'font-families';
 @import 'theme';
+
+.post-meta a {
+    color: var(--secondary);
+}
+.post-meta a:hover {
+    color: var(--primary);
+    box-shadow: 0 1px 0 var(--primary);
+}

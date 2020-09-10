@@ -20,7 +20,7 @@ google_analytics = { enabled = false, id = ""}
 # The theme author info: you!
 [author]
 name = "Maximilian Schoenenberg"
-homepage = "https://www.schoenenberg.dev"
+homepage = "https://schoenenberg.dev"
 
 [original]
 author =  "nanxiaobei"

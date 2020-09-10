@@ -5,7 +5,12 @@
     <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="post-meta">
-            <span class="post-author">Author: {{ page.extra.author }}</span>
+            {% if page.extra.author_url %}Author: <a class="post-author" href="{{ page.extra.author_url | safe }}">
+                {{ page.extra.author }}
+            </a>
+            {% else %}<span class="post-author">
+                Author: {{ page.extra.author }}
+            </span>{% endif %}
             <br/>
             <span class="post-date">Published: <time>{{ page.date | date(format="%B %e, %Y") }}</time></span>
             <span>&middot;</span>
