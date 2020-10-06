@@ -21,4 +21,3 @@ taxonomies = [
 # Put all your custom variables here
 links = [
 ]
-google_analytics = { enabled = true, id = "UA-174641029-2"}
