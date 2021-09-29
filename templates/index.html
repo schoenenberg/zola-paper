@@ -122,17 +122,26 @@
         <main class="main">
             {% block content %}
             <div class="posts">
-                {% for page in paginator.pages %}
-                {% if loop.index == 1 and paginator.current_index == 1 %}
+                {% set is_first_page = true %}
+                {% if paginator is defined %}
+                    {% set pages = paginator.pages %}
+                    {% set is_first_page = paginator.current_index == 1 %}
+                {% elif section is defined %}
+                    {% set pages = section.pages %}
+                {% endif %}
+                {% for page in pages %}
+                {% if loop.index == 1 and is_first_page %}
                 <article class="first-entry">{% else %}<article class="post-entry">{% endif %}
                 {{ post_macros::page_in_list(page=page)}}
                 </article>{% endfor %}
+                {% if paginator is defined %}
                 <footer class="page-footer">
                     <nav class="pagination">
                         {% if paginator.previous %}<a class="prev" href="{{ paginator.previous }}">← Previous</a>{% else %}<!--Hidden Previous-Button-->{% endif %}
                         {% if paginator.next %}<a class="next" href="{{ paginator.next }}">Next →</a>{% else %}<!--Hidden Next-Button-->{% endif %}
                     </nav>
                 </footer>
+                {% endif %}
             </div>
             {% endblock content %}
         </main>
