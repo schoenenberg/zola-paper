@@ -3,11 +3,18 @@
 {% block content %}
     <div class="posts">
         <h2>Tag: {{ term.name }}</h2>
-        {% for page in paginator.pages %}
+        {% if paginator is defined %}
+            {% set pages = paginator.pages %}
+        {% elif term is defined %}
+            {% set pages = term.pages %}
+        {% endif %}
+        {% for page in pages %}
         <article class="post-entry">
             {{ post_macros::page_in_list(page=page)}}
         </article>
         {% endfor %}
+        
+        {% if paginator is defined %}
         <footer class="page-footer">
             <nav class="pagination">
                 {% if paginator.previous %}
@@ -19,5 +26,6 @@
                 {% endif %}
             </nav>
         </footer>
+        {% endif %}
     </div>
 {% endblock content %}
