@@ -14,7 +14,7 @@
 
         <!-- Standard meta tags -->
         {% if page.extra.author %}<meta name="author" content="{{ page.extra.author }}">{% endif %}
-        {% if page.summary %}<meta name="description" content="{{ page.summary | markdown(inline=true) }}">{% endif %}
+        {% if page.description %}<meta name="description" content="{{ page.description | markdown(inline=true) }}">{% endif %}
 
         <!-- Open Graph Tags -->
         <meta property="og:site_name" content="{{ config.title }}">
