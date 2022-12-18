@@ -14,14 +14,14 @@
 
         <!-- Standard meta tags -->
         {% if page.extra.author %}<meta name="author" content="{{ page.extra.author }}">{% endif %}
-        {% if page.summary %}<meta name="description" content="{{ page.summary | markdown(inline=true) }}">{% endif %}
+        {% if page.summary %}<meta name="description" content="{{ page.summary | safe }}">{% endif %}
 
         <!-- Open Graph Tags -->
         <meta property="og:site_name" content="{{ config.title }}">
         {% if page %}
         <meta property="og:title" content="{{ page.title }}">
         <meta property="og:url" content="{{ get_url(path=page.path, trailing_slash=false) }}">
-        <meta property="og:description" content="{{ page.summary | markdown(inline=true) }}">
+        <meta property="og:description" content="{{ page.summary | safe }}">
         {% if page.extra.banner_path %}
         <meta property='og:image' content="{{ resize_image(path=page.extra.banner_path, width=1200, height=627, op="fill", format="auto", quality=75) }}"/>
         <meta property='og:image:width' content="1200"/>
