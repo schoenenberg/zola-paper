@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Zola-Paper</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <!-- Enable responsiveness on mobile devices-->
+        <!-- viewport-fit=cover is to support iPhone X rounded corners and notch in landscape-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+
+        <!-- Standard meta tags -->
+        
+        
+
+        <!-- Open Graph Tags -->
+        <meta property="og:site_name" content="Zola-Paper">
+        
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://schoenenberg.github.io/zola-paper">
+        
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://schoenenberg.github.io/zola-paper/main.css">
+
+        <!-- Feeds -->
+        
+
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174641029-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-174641029-2');
+        </script>
+
+        <script>
+            function setTheme() {
+                const time = new Date();
+      
+                const prev = localStorage.getItem('date');
+                const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+      
+                const now = time.getTime();
+                let sunrise;
+                let sunset;
+      
+                function setBodyClass() {
+                    if (now > sunrise && now < sunset) return;
+                    document.body.classList.add('dark');
+                }
+      
+                if (date !== prev) {
+                    fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+                        .then(res => res.json())
+                        .then(data => {
+                            sunrise = data.sunrise.split(':').map(Number);
+                            sunset = data.sunset.split(':').map(Number);
+                    })
+                    .catch(() => {
+                        sunrise = [7, 0];
+                        sunset = [19, 0];
+                    })
+                    .finally(() => {
+                        sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+                        sunset = time.setHours(sunset[0], sunset[1], 0);
+                        setBodyClass();
+                        localStorage.setItem('sunrise', sunrise);
+                        localStorage.setItem('sunset', sunset);
+                    });
+                    localStorage.setItem('date', date);
+                } else {
+                    sunrise = Number(localStorage.getItem('sunrise'));
+                    sunset = Number(localStorage.getItem('sunset'));
+                    setBodyClass();
+                }
+            }
+        </script>
+    </head>
+    
+    <body class="list">
+    
+    <!-- Apply theme -->
+    <script>
+      setTheme();
+    </script>
+
+    
+        <header class="header">
+            <nav class="nav">
+                
+                <h1 class="logo"><a href="https://schoenenberg.github.io/zola-paper">Zola-Paper</a></h1>
+                
+                <ul class="menu">
+                    
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main">
+            
+    <div class="posts">
+        <h2>Tag: other</h2>
+        
+            
+        
+        
+        <article class="post-entry">
+            
+                    <header class="entry-header">
+                        <h2>A first theme for Gutenberg</h2>
+                    </header>
+                    <section class=entry-content>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu feugiat sapien. Aenean ligula nunc, laoreet id sem in, interdum bibendum felis. Donec vel dui neque. Praesent ac sem ut justo volutpat rutrum a imperdiet tellus. Nam lobortis massa non hendrerit hendrerit. Vivamus porttitor dignissim turpis, eget aliquam urna tincidunt non. Aliquam et fringilla turpis. Nullam eros est, eleifend in ornare sed, hendrerit eget est. Aliquam tellus felis, suscipit vitae ex vel, fringilla tempus massa. Nulla facilisi. Pellentesque lobortis consequat lectus. Maecenas ac libero elit.</p>
+
+                    </section>
+                    <footer class="entry-footer">
+                        <time>September 25, 2017</time>
+                    </footer>
+                    <a class="entry-link" href="https:&#x2F;&#x2F;schoenenberg.github.io&#x2F;zola-paper&#x2F;some-other-article&#x2F;"></a>
+
+        </article>
+        
+        <article class="post-entry">
+            
+                    <header class="entry-header">
+                        <h2>What is Gutenberg</h2>
+                    </header>
+                    <section class=entry-content>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu feugiat sapien. Aenean ligula nunc, laoreet id sem in, interdum bibendum felis. Donec vel dui neque. Praesent ac sem ut justo volutpat rutrum a imperdiet tellus. Nam lobortis massa non hendrerit hendrerit. Vivamus porttitor dignissim turpis, eget aliquam urna tincidunt non. Aliquam et fringilla turpis. Nullam eros est, eleifend in ornare sed, hendrerit eget est. Aliquam tellus felis, suscipit vitae ex vel, fringilla tempus massa. Nulla facilisi. Pellentesque lobortis consequat lectus. Maecenas ac libero elit.</p>
+
+                    </section>
+                    <footer class="entry-footer">
+                        <time>September 24, 2017</time>
+                    </footer>
+                    <a class="entry-link" href="https:&#x2F;&#x2F;schoenenberg.github.io&#x2F;zola-paper&#x2F;some-article&#x2F;"></a>
+
+        </article>
+        
+        <article class="post-entry">
+            
+                    <header class="entry-header">
+                        <h2>A third article</h2>
+                    </header>
+                    <section class=entry-content>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eu feugiat sapien. Aenean ligula nunc, laoreet id sem in, interdum bibendum felis. Donec vel dui neque. Praesent ac sem ut justo volutpat rutrum a imperdiet tellus. Nam lobortis massa non hendrerit hendrerit. Vivamus porttitor dignissim turpis, eget aliquam urna tincidunt non. Aliquam et fringilla turpis. Nullam eros est, eleifend in ornare sed, hendrerit eget est. Aliquam tellus felis, suscipit vitae ex vel, fringilla tempus massa. Nulla facilisi. Pellentesque lobortis consequat lectus. Maecenas ac libero elit.</p>
+
+                    </section>
+                    <footer class="entry-footer">
+                        <time>September 22, 2017</time>
+                    </footer>
+                    <a class="entry-link" href="https:&#x2F;&#x2F;schoenenberg.github.io&#x2F;zola-paper&#x2F;article-3&#x2F;"></a>
+
+        </article>
+        
+        
+        
+        <footer class="page-footer">
+            <nav class="pagination">
+                
+                <!-- <span>Page 1 of 1</span> -->
+                
+            </nav>
+        </footer>
+        
+    </div>
+
+        </main>
+
+        <footer class="footer">
+            <span>&copy; 2023 <a href="https://schoenenberg.github.io/zola-paper">Zola-Paper</a></span>
+            <span>&middot;</span>
+            <span>Powered by <a href="https://www.getzola.org" rel="noopener" target="_blank">Zola</a>️</span>
+            <span>&middot;</span>
+            <span>Theme️ <a href="https://github.com/schoenenberg/zola-paper" rel="noopener" target="_blank">Zola-Paper</a></span>
+        </footer>
+    
+    </body>
+</html>
